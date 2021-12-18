@@ -28,9 +28,9 @@ public interface OrdersCrudRepository extends MongoRepository<Orders,Integer>{
      * @param date
      * @param id
      * @return
-     */
+     
     @Query("{$and:[{'registerDay':?0},{'salesMan._id':?1}]}")
-    List<Orders> getOrdersByDateAndSalesman(Date date,Integer id);
+    List<Orders> getOrdersByDateAndSalesman(Date date,Integer id);*/
     /**
      * 
      * @param status
@@ -39,4 +39,5 @@ public interface OrdersCrudRepository extends MongoRepository<Orders,Integer>{
      */
     @Query("{$and:[{'status':?0},{'salesMan._id':?1}]}")
     List<Orders> getOrdersByStatus(String status,Integer id);
+    List<Orders> findByRegisterDayAndSalesManId(Date registerDay, Integer id);
 }

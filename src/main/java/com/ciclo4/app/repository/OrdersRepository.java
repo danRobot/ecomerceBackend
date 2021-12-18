@@ -42,7 +42,7 @@ public class OrdersRepository {
         return repository.getOrdersBySalesman(id);
     }
     public List<Orders> getOrdersByDate(Date date,Integer id){
-        return repository.getOrdersByDateAndSalesman(date, id);
+        return repository.findByRegisterDayAndSalesManId(date, id);
     }
     public List<Orders> getOrdersByStatus(String status,Integer id){
         return repository.getOrdersByStatus(status, id);
