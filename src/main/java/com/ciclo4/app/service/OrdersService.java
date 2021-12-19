@@ -1,5 +1,6 @@
 package com.ciclo4.app.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +49,19 @@ public class OrdersService {
         return repositorio.getOrdersBySalesman(id);
     }
     public List<Orders> getOrdersByDate(Date date,Integer id){
-        return repositorio.getOrdersByDate(date, id);
+        List<Orders> allOrders=repositorio.listAll();
+        List<Orders> query=new ArrayList<Orders>();
+        int val1;
+        for (Orders orders : allOrders) {
+            val1=orders.getRegisterDay().compareTo(date);
+            if (val1==0 && orders.getSalesMan().getId()==id) {
+                query.add(orders);
+            }
+        }
+        System.out.println(query);
+        System.out.println(repositorio.getOrdersByDate(date, id));
+        return query;
+        //return repositorio.getOrdersByDate(date, id);
     }
     public List<Orders> getOrdersByStatus(String status,Integer id){
         return repositorio.getOrdersByStatus(status, id);

@@ -56,9 +56,6 @@ public class OrdersController {
     }
     @GetMapping("/date/{date}/{id}")
     public List<Orders> getOrderbySalesman(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,@PathVariable Integer id){
-        System.out.println("AAAAAAAAAAA");
-        System.out.println(date);
-        System.out.println("AAAAAAAAAAA");
         return servicio.getOrdersByDate(date, id);
     }
     @GetMapping("/state/{state}/{id}")
