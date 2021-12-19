@@ -1,5 +1,6 @@
 package com.ciclo4.app.repository;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class OrdersRepository {
     private OrdersCrudRepository repository;
     /*@Autowired
     private MongoTemplate mongoTemplate;*/
-
+    private Calendar calendar=null;
     public List<Orders> listAll() {
         return repository.findAll();
     }
@@ -42,7 +43,17 @@ public class OrdersRepository {
         return repository.getOrdersBySalesman(id);
     }
     public List<Orders> getOrdersByDate(Date date,Integer id){
-        return repository.findByRegisterDayAndSalesManId(date, id);
+        calendar=Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        Date begin=calendar.getTime();
+        calendar.set(Calendar.HOUR_OF_DAY,11);
+        calendar.set(Calendar.MINUTE,59);
+        calendar.set(Calendar.SECOND,59);
+        Date end=calendar.getTime();
+        return repository.getOrdersByDateAndSalesman(begin, end, id);
     }
     public List<Orders> getOrdersByStatus(String status,Integer id){
         return repository.getOrdersByStatus(status, id);
