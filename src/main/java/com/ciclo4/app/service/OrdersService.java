@@ -49,6 +49,7 @@ public class OrdersService {
         return repositorio.getOrdersBySalesman(id);
     }
     public List<Orders> getOrdersByDate(Date date,Integer id){
+        /* CODIGO QUE SIRVE PARA DEPURAR
         List<Orders> allOrders=repositorio.listAll();
         List<Orders> query=new ArrayList<Orders>();
         int val1;
@@ -67,7 +68,8 @@ public class OrdersService {
         System.out.println(query);
         System.out.println(repositorio.getOrdersByDate(date, id));
         return query;
-        //return repositorio.getOrdersByDate(date, id);
+        */
+        return repositorio.getOrdersByDate(date, id);
     }
     public List<Orders> getOrdersByStatus(String status,Integer id){
         return repositorio.getOrdersByStatus(status, id);
