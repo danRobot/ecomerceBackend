@@ -46,3 +46,4 @@ build/
 
 ### Application.propierties ##
 src/main/resources/application.properties
+pom.prod.xml
