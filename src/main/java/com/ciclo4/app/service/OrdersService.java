@@ -54,6 +54,12 @@ public class OrdersService {
         int val1;
         for (Orders orders : allOrders) {
             val1=orders.getRegisterDay().compareTo(date);
+            System.out.println("###### DATE ######");
+            System.out.println(date);
+            System.out.println(orders.getRegisterDay());
+            System.out.println("###### ID ######");
+            System.out.println(orders.getSalesMan().getId());
+            System.out.println("###### ID ######");
             if (val1==0 && orders.getSalesMan().getId()==id) {
                 query.add(orders);
             }
